@@ -1,0 +1,11 @@
+.container{
+  display:flex;
+  width:125px;
+  justify-content: space-between;
+  .rond{
+  width:20px;
+  height:20px;
+  background-color:gray;
+  border-radius:100%;
+  }
+}

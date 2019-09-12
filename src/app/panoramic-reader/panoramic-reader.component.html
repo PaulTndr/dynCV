@@ -1,0 +1,22 @@
+<div id="panoramicReader" style="display:flex;transform : scale(0.4);">
+  <div id="readerContainer">
+    <div id="reader" [style]="styleForZoom">
+      <!--TECH-->
+      <app-exemple-tech [data]="data"></app-exemple-tech>
+    </div>
+  </div>
+
+  <div id="readerContainer">
+    <div id="reader" [style]="styleForZoom">
+      <!--RH-->
+      <app-rh1 [data]="data"></app-rh1>
+    </div>
+  </div>
+
+  <div id="readerContainer">
+    <div id="reader" [style]="styleForZoom">
+      <!--PERSONAL-->
+      <app-exemple-personal [data]="data"></app-exemple-personal>
+    </div>
+  </div>
+</div>

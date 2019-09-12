@@ -1,0 +1,20 @@
+#reader{
+  background-color:white;
+  width:1000px;
+  margin:auto;
+  margin-bottom:10px;
+  margin-top:10px;
+  transform : scale(0.9);
+}
+
+#readerContainer{
+  height:90vh;
+}
+
+#panoramicReader{
+  display: flex;
+  transform: scale(0.4);
+  margin-left: -27vw;
+  margin-top: -9vh;
+  position: absolute;
+}

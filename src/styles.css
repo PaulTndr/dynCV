@@ -1,0 +1,31 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body{
+  width:100%;
+  height:100%;
+  margin:0px;
+  overflow-y: overlay;
+  background-image: url("https://www.zupimages.net/up/19/35/yizz.png");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+body::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #000000bf;
+}

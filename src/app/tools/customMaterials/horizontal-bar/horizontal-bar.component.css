@@ -1,0 +1,15 @@
+.track{
+  width:200px;
+  height:10px;
+  background-color:#d2d4ef;
+  border-radius:10px;
+}
+
+.slider{
+  width:0px;
+  height:10px;
+  background-color:#837ecc; 
+  border-radius:10px;
+  transition-property: width;
+  transition-duration: 2s;
+}

@@ -1,0 +1,78 @@
+
+<div id="page">
+  <div id="leftColumn">
+    <img class="photoProfil" src="{{data['general']['linkPicture']}}"/>
+    <p class="name">{{data["general"]["name"]}}</p>
+
+    <div id="contact">
+      <h1>Contacts</h1>
+      <h2>Adresse mail</h2>
+      <p>{{data["general"]["mail"]}}</p>
+      <h2>Numéro de téléphone</h2>
+      <p>{{data["general"]["numeroTel"]}}</p>
+      <h2>Adresse</h2>
+      <p>{{data["general"]["adresse"]}}</p>
+      <h2>LinkedIn</h2>
+      <p>{{data["general"]["linkedin"]}}</p>
+    </div>
+
+    <div id="interets">
+      <h1>Intérêts</h1>
+      <p *ngFor="let interet of data['interets']">{{interet}}</p>
+    </div>
+
+    <div id="langues">
+      <h1>Langues</h1>
+      <div class="oneLangue" *ngFor="let langue of data['skills']['langue']">
+        <p>{{langue["name"]}} ({{langue["level"]}})</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="mainPannel">
+    <p>{{data["general"]["description"]}}</p>
+
+    <div id="formations">
+      <h1>Enseignements</h1>
+      <div class="oneFormation" *ngFor="let formation of data['formations']">
+        <div style="display:flex; justify-content: space-between;">
+          <p class="title">{{formation["title"]}}</p>
+          <p class="date">{{formation["startDate"]}} - {{formation["endDate"]}}</p>
+        </div>
+        <p class="location">{{formation["location"]}}</p>
+      </div>
+    </div>
+
+    <div id="experiences">
+      <h1>Expériences professionnelles</h1>
+      <div class="oneExp" *ngFor="let exp of data['experiences']">
+        <div style="display:flex; justify-content: space-between;">
+          <p class="title">{{exp["title"]}}</p>
+          <p class="date">{{exp["startDate"]}} - {{exp["endDate"]}}</p>
+        </div>
+        <p class="location">{{exp["entreprise"]}}</p>
+        <p>{{exp["description"]}}</p>
+      </div>
+    </div>
+
+    <div id="techSkill">
+      <h1>Compétences techniques</h1>
+      <div class="oneTechSkill" *ngFor="let techSkill of data['skills']['technical']">
+        <p style="width: 150px;">{{techSkill["name"]}}</p>
+        <app-horizontal-bar style="margin-block-start: auto; margin-block-end: auto;" [level]="techSkill['level']" color="#837ecc" backgroundColor="#d2d4ef"></app-horizontal-bar>
+      </div>
+    </div>
+
+    <div id="references">
+      <h1>Références</h1>
+      <div class="oneRef" *ngFor="let ref of data['references']">
+        <div style="display:flex; justify-content: space-between;">
+          <p class="title">{{ref["name"]}}</p>
+          <p class="role">{{ref["role"]}}</p>
+        </div>
+        <p>Tel : {{ref["contactTel"]}}</p>
+        <p>Mail : {{ref["contactMail"]}}</p>
+      </div>
+    </div>
+  </div>
+</div>

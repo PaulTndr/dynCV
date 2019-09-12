@@ -1,0 +1,58 @@
+<!--<button kendo-button (click)="pdf.saveAs('invoice.pdf')">
+  Save As PDF...
+</button>-->
+<div id="cadreReader">
+  <div id="topBar">
+    <h1 id="titre">CV {{typeCV}} {{data["general"]["name"]}}</h1>
+    
+    <div style="display:flex; width:300px; justify-content:space-between;">
+    <p>Select a template</p>
+    <mat-form-field style="margin-top:8px">
+      <mat-select [(value)]="templateSelected">
+        <mat-option *ngFor="let template of listTemplateForSelected" [value]="template">{{template['name']}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    </div>
+
+    <div id="optionsDoc">
+      <div class="oneOption" (click)="openSharePopup()">
+        <p>Share</p>
+        <img src="https://image.flaticon.com/icons/svg/148/148798.svg"/>
+      </div>
+      <div class="oneOption" (click)="print('#cadreReader')">
+        <p>Print</p>
+        <img src="https://image.flaticon.com/icons/svg/1025/1025430.svg"/>
+      </div>
+      <div class="oneOption" (click)="pdf.saveAs('invoice.pdf')">
+        <p>Save as PDF</p>
+        <img src="https://image.flaticon.com/icons/svg/179/179483.svg"/>
+      </div>
+    </div>
+  </div>
+  <div id="buttonsZoom">
+    <img id="buttonZoomIn" src="https://image.flaticon.com/icons/svg/149/149162.svg" (click)="ajustZoom('in')"/>
+    <img id="buttonZoomOut" src="https://image.flaticon.com/icons/svg/149/149163.svg" (click)="ajustZoom('out')"/>
+    <img id="buttonZoomAdapt" src="https://image.flaticon.com/icons/svg/149/149164.svg" (click)="ajustZoom('adapt')"/>
+  </div>
+</div>
+
+<div class="popupShare" *ngIf="isPopupShareOpen">
+  <h1>Partager ce CV</h1>
+  <input onClick="this.select();" [value]="linkCurrent" />
+  <h1>Partager ce site</h1>
+  <input onClick="this.select();" [value]="linkGlobal" />
+</div>
+
+<div id="readerContainer">
+  <kendo-pdf-export #pdf paperSize="A4">
+    <div id="reader" [style]="styleForZoom">
+      <!--RH-->
+        <app-exemple-rh [data]="data" *ngIf="isRH && templateSelected['id']===0"></app-exemple-rh>
+        <app-rh1 [data]="data" *ngIf="isRH && templateSelected['id']===1"></app-rh1>
+      <!--TECH-->
+        <app-exemple-tech [data]="data" *ngIf="isTech && templateSelected['id']===0"></app-exemple-tech>
+      <!--PERSONAL-->
+        <app-exemple-personal [data]="data" *ngIf="isPersonal && templateSelected['id']===0"></app-exemple-personal>
+    </div>
+  </kendo-pdf-export> 
+</div>

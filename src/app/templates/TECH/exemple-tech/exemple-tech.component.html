@@ -1,0 +1,139 @@
+
+<div id="page">
+  <div id="background"></div>
+  <div id="insidePage"> 
+    <img class="photoProfil" src="{{data['general']['linkPicture']}}"/>
+    <p class="name">{{data["general"]["name"] | uppercase}}</p>
+    <div style="display:flex;">
+      <div id="leftPannel">
+
+        <div class="profil">
+          <div style="display:flex; align-items:center;">
+            <img class="icon" src="https://image.flaticon.com/icons/svg/74/74472.svg">
+            <h2>Profil</h2>
+          </div>
+          <p class="descProfil">{{data['descTechnique']}}</p>
+        </div>
+
+        <div id="contact">
+          <div style="display:flex; align-items:center;">
+            <img class="icon" src="https://image.flaticon.com/icons/svg/46/46646.svg">
+            <h2>Contacts</h2>
+          </div>
+          <div class="oneContact">
+            <img src="https://image.flaticon.com/icons/svg/148/148982.svg"/>
+            <p>30 avril 1997</p>
+          </div>
+          <div class="oneContact">
+            <img src="https://image.flaticon.com/icons/svg/252/252106.svg"/>
+            <p>{{data["general"]["adresse"]}}</p>
+          </div>
+          <div class="oneContact">
+            <img src="https://image.flaticon.com/icons/svg/261/261932.svg"/>
+            <p>{{data["general"]["numeroTel"]}}</p>
+          </div>
+          <div class="oneContact">
+            <img src="https://image.flaticon.com/icons/svg/321/321817.svg"/>
+            <p>{{data["general"]["mail"]}}</p>
+          </div>
+          <div class="oneContact">
+            <img src="https://image.flaticon.com/icons/svg/226/226241.svg"/>
+            <p>{{data["general"]["linkedin"]}}</p>
+          </div>
+        </div>
+
+        <div class="techno">
+          <div style="display:flex; align-items:center;">
+            <img class="icon" src="https://image.flaticon.com/icons/svg/252/252851.svg"/>
+            <h2>Technologies</h2>
+          </div>
+
+          <!--En dur-->
+          <!--Git-->
+          <div class="tooltip">
+            <img class="oneTechnoPicture" style="position:absolute; z-index:4;left: 259px;bottom: 500px;" src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png"/>
+            <span class="tooltiptext">Git</span>
+          </div>
+          <!--Angular-->
+          <div class="tooltip">
+            <img class="oneTechnoPicture" style="position:absolute; z-index:4;left: 295px;bottom: 410px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png"/>
+            <span class="tooltiptext">Angular</span>
+          </div>
+          <!--Struts-->
+          <div class="tooltip">
+            <img class="oneTechnoPicture" style="position:absolute; z-index:4;left: 242px;bottom: 338px;" src="https://zupimages.net/up/19/37/ayv6.png"/>
+            <span class="tooltiptext">Struts</span>
+          </div>
+          <!--SQL-->
+          <div class="tooltip">
+            <img class="oneTechnoPicture" style="position:absolute; z-index:4;left: 141px;bottom: 340px;width: 80px;" src="https://www.supinfo.com/articles/resources/205990/6738/0.png"/>
+            <span class="tooltiptext">SQL</span>
+          </div>
+          <!--JAVA-->
+          <div class="tooltip">
+            <img class="oneTechnoPicture" style="position:absolute; z-index:4;left: 113px;bottom: 415px;" src="https://image.flaticon.com/icons/png/512/226/226777.png"/>
+            <span class="tooltiptext">Java</span>
+          </div>
+          <!--jQuery-->
+          <div class="tooltip">
+            <img class="oneTechnoPicture" style="position:absolute; z-index:4;left: 155px;bottom: 502px;" src="https://zupimages.net/up/19/37/rffw.png"/>
+            <span class="tooltiptext">jQuery</span>
+          </div>
+          
+          <div style="display:flex; align-items:center; margin-left: 20px;">
+            <img style="width:15px;margin-right: 10px;" src="https://image.flaticon.com/icons/svg/906/906794.svg"/>
+            <h3>Technologies connues</h3>
+          </div>
+          <canvas class="statChart" #graphTechno id="graphTechno" style="display: block;">{{ graphTechnoChart }}</canvas>
+          <div style="display:flex; align-items:center; margin-left: 20px;margin-top: 250px;">
+            <img style="width:15px;margin-right: 10px;" src="https://image.flaticon.com/icons/svg/907/907830.svg"/>
+            <h3>Technologies favorites</h3>
+          </div>
+          <canvas class="statChart" #graphTechno2 id="graphTechno2" style="display: block;">{{ graphTechnoChart2 }}</canvas>
+        </div>
+      </div>
+      <div id="rightPannel">
+         <div class="formations">
+          <div style="display:flex; align-items:center;">
+            <img class="icon" src="https://image.flaticon.com/icons/svg/171/171322.svg"/>
+            <h2>Formations techniques</h2>
+          </div>
+          <div class="oneFormation" *ngFor="let formaTech of data['formationsTech']; let i= index"id="{{'IdForma'+i}}">
+            <div style="display:flex; justify-content:space-between; align-items: center;">
+              <p style="font-weight:bold">{{formaTech['name']}}</p>
+              <p style="font-style:italic; font-size:80%;">({{formaTech['contexte']}})</p>
+            </div>
+            <p class="desc">{{formaTech['desc']}}</p>
+          </div>
+        </div>
+
+        <div class="expPro">
+          <div style="display:flex; align-items:center;">
+            <img class="icon" src="https://image.flaticon.com/icons/svg/1535/1535944.svg"/>
+            <h2>Expériences professionelles</h2>
+          </div>
+          <div class="oneExp" *ngFor="let exp of data['experiencePro']; let i= index" id="{{'IdExp'+i}}">
+            <div style="display:flex; justify-content:space-between; align-items: center;">
+              <p style="font-weight:bold">{{exp['name']}}</p>
+              <p style="font-style:italic;">{{exp['entreprise']}}</p>
+            </div>
+            <p style="font-style:italic;">{{exp['techno']}}</p>
+            <p class="desc">{{exp['desc']}}</p>
+          </div>
+        </div>
+
+        <div class="projetsPerso">
+          <div style="display:flex; align-items:center;">
+            <img class="icon" src="https://image.flaticon.com/icons/svg/1420/1420462.svg"/>
+            <h2>Projets personnels</h2>
+          </div>
+          <div class="oneProject" *ngFor="let projetPerso of data['projetPerso']; let i= index" id="{{'IdProjet'+i}}">
+            <p style="font-weight:bold">{{projetPerso['name']}}</p>
+            <p class="desc">{{projetPerso['desc']}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  

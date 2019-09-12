@@ -1,0 +1,192 @@
+
+<div id="page">
+  <div id="insidePage">
+    <div id="forBackground" [style]="styleForBackground">
+    </div>
+    <div class="oneTrapeze trapezeTop">
+    </div>
+    <div class="oneTrapeze trapezeBottom">
+    </div>
+    <img class="photoProfil" src="{{data['general']['linkPicture']}}"/>
+
+    <h2 class="name">{{data["general"]["name"]}}</h2>
+
+    <div id="contact">
+      <div class="oneContact">
+        <div class="divIcon">
+          <img class="icon" src="https://image.flaticon.com/icons/svg/888/888903.svg"/>
+        </div>
+        <p>{{data["general"]["mail"]}}</p>
+      </div>
+      <div class="separatorPoint">
+      </div>
+      <div class="oneContact">
+        <div class="divIcon">
+          <img class="icon" src="https://image.flaticon.com/icons/svg/552/552489.svg">
+        </div>
+        <p>{{data["general"]["numeroTel"]}}</p>
+      </div>
+      <div class="separatorPoint">
+      </div>
+      <div class="oneContact">
+        <div class="divIcon">
+          <img class="icon" src="https://image.flaticon.com/icons/svg/220/220201.svg">
+        </div>
+        <p>{{data["general"]["linkedin"]}}</p>
+      </div>
+    </div>
+
+    <p id="description">{{data["personality"]["description"]}}</p>
+
+    <div id="listQualites">
+      <h1>Qualités et défauts</h1>
+      <div class="blockQualAndDef">
+        <div class="listQualites">
+          <div class="oneQualOrDef" *ngFor="let quality of data['personality']['qualities']">
+            <p style="width: 50%;text-align: center; margin: 0px;">{{quality['name']}}</p>
+            <app-horizontal-bar style="margin-block-start: auto; margin-block-end: auto;" [level]="quality['level']" color="rgb(125, 255, 134);" backgroundColor="#cacaca"></app-horizontal-bar>
+          </div>
+        </div>
+        <div class="listDefauts">
+          <div class="oneQualOrDef" *ngFor="let defaut of data['personality']['defauts']">
+            <p style="width: 50%;text-align: center; margin: 0px;">{{defaut['name']}}</p>
+            <app-horizontal-bar style="margin-block-start: auto; margin-block-end: auto;" [level]="defaut['level']" color="rgb(255, 137, 137);" backgroundColor="#cacaca"></app-horizontal-bar>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <!--<div id="listDefauts">
+      <h1>Mes défauts</h1>
+      <p *ngFor="let defaut of data['personality']['defauts']">{{defaut}}</p>
+    </div>-->
+
+    <div id="listMotivations">
+      <h1>Motivations</h1>
+      <div class="motivations">
+        <div class="oneMotivation" *ngFor="let motivation of data['motivations']">
+          <p>{{motivation['name']}}</p>
+          <app-horizontal-rate [level]="motivation['level']" rondColor="rgb(132, 148, 255);" backgroundColor="#bdbdbd"></app-horizontal-rate>
+        </div>
+      </div>
+    </div>
+
+    <!--<div id="listMotivations">
+      <h1>Ce qui me repousse</h1>
+      <p *ngFor="let demotivation of data['demotivations']">{{demotivation}}</p>
+    </div>-->
+
+    <div id="listAssociations">
+      <h1>Associations</h1>
+      <div *ngFor="let expAssociation of data['associations'] ; let i= index">
+        <div *ngIf="i!=0" class="lineSeparator"></div>
+        <div class="oneAssociation">
+          <div class="blockName">
+            <img [src]="expAssociation['logoSrc']"/>
+          </div>
+          <div class="blockDesc">
+            <p><b>{{expAssociation["name"]}}</b> | {{expAssociation["poste"]}}</p>
+            <p class="descAsso">{{expAssociation["description"]}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="listReferences">
+      <h1>Références</h1>
+      <div *ngFor="let ref of data['references']; let i= index">
+        <div *ngIf="i!=0" class="lineSeparator"></div>
+        <div style="display:flex; justify-content: space-between;">
+          <p class="title"><b>{{ref["name"]}}</b> | {{ref["role"]}}</p>
+        </div>
+        <div class="contactRef">
+          <div class="oneContactRef">
+            <img class="icon" src="https://image.flaticon.com/icons/svg/888/888903.svg"/>
+            <p>{{ref["contactMail"]}}</p>
+          </div>
+
+          <div class="oneContactRef">
+            <img class="icon" src="https://image.flaticon.com/icons/svg/552/552489.svg">
+            <p>{{ref["contactTel"]}}</p>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!--<div id="leftColumn">
+    <img class="photoProfil" src="{{data['general']['linkPicture']}}"/>
+    <p class="name">{{data["general"]["name"]}}</p>
+
+    <div id="contact">
+      <h1>Contacts</h1>
+      <h2>Adresse mail</h2>
+      <p>{{data["general"]["mail"]}}</p>
+      <h2>Numéro de téléphone</h2>
+      <p>{{data["general"]["numeroTel"]}}</p>
+      <h2>Adresse</h2>
+      <p>{{data["general"]["adresse"]}}</p>
+      <h2>LinkedIn</h2>
+      <p>{{data["general"]["linkedin"]}}</p>
+    </div>
+
+    <div id="interets">
+      <h1>Intérêts</h1>
+      <p *ngFor="let interet of data['interets']">{{interet}}</p>
+    </div>
+
+    <div id="langues">
+      <h1>Langues</h1>
+      <div class="oneLangue" *ngFor="let langue of data['skills']['langue']">
+        <p>{{langue["name"]}} ({{langue["level"]}})</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="mainPannel">
+    <p>{{data["general"]["description"]}}</p>
+
+    <div id="formations">
+      <h1>Enseignements</h1>
+      <div class="oneFormation" *ngFor="let formation of data['formations']">
+        <div style="display:flex; justify-content: space-between;">
+          <p class="title">{{formation["title"]}}</p>
+          <p class="date">{{formation["startDate"]}} - {{formation["endDate"]}}</p>
+        </div>
+        <p class="location">{{formation["location"]}}</p>
+      </div>
+    </div>
+
+    <div id="experiences">
+      <h1>Expériences professionnelles</h1>
+      <div class="oneExp" *ngFor="let exp of data['experiences']">
+        <div style="display:flex; justify-content: space-between;">
+          <p class="title">{{exp["title"]}}</p>
+          <p class="date">{{exp["startDate"]}} - {{exp["endDate"]}}</p>
+        </div>
+        <p class="location">{{exp["entreprise"]}}</p>
+        <p>{{exp["description"]}}</p>
+      </div>
+    </div>
+
+    <div id="techSkill">
+      <h1>Compétences techniques</h1>
+      <div class="oneTechSkill" *ngFor="let techSkill of data['skills']['technical']">
+        <p style="width: 150px;">{{techSkill["name"]}}</p>
+        <app-horizontal-bar style="margin-block-start: auto; margin-block-end: auto;" [level]="techSkill['level']"></app-horizontal-bar>
+      </div>
+    </div>
+
+    <div id="references">
+      <h1>Références</h1>
+      <div class="oneRef" *ngFor="let ref of data['references']">
+        <div style="display:flex; justify-content: space-between;">
+          <p class="title">{{ref["name"]}}</p>
+          <p class="role">{{ref["role"]}}</p>
+        </div>
+        <p>Tel : {{ref["contactTel"]}}</p>
+        <p>Mail : {{ref["contactMail"]}}</p>
+      </div>
+    </div>
+  </div>-->
+  
